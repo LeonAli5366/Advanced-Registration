@@ -33,7 +33,7 @@ const Form = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col items-center justify-evenly text-white w-full h-full gap-2 bg-black p-10"
+      className="flex flex-col items-center text-black w-full h-full gap-2 bg-white sm:p-10 p-5"
     >
       {/* title 1 */}
       <h3 className="sm:text-[1rem] text-[1.5rem] font-medium">
@@ -43,40 +43,32 @@ const Form = () => {
       <h3 className="sm:text-[2rem] text-[1.5rem] font-medium">
         ADVANCE REGISTRATION FORM
       </h3>
-      <div className="flex gap-5 w-full h-full">
-        {/* right side */}
+      <div className="flex sm:flex-row flex-col gap-5 w-full h-full">
+        {/* left side */}
         <div className="w-[70%] flex flex-col gap-3">
+          <h1 className="text-xl font-bold">
+            For immediate confirmation of your registration, complete the online
+            convention registration form at www.apa.org/convention. You may
+            register online beginning on April 15, 2016, at 10:00 a.m. EDT
+            through August 7, 2016, the last day of the convention.
+          </h1>
           {/* input 1 */}
           <div className="w-full flex flex-col gap-1">
+            <input
+              type="text"
+              className="w-[500px] outline-none border-b-2 border-pink-600"
+            />
             <p className="cursor-pointer sm:text-base text-sm">
               APA Member Number (8 digits)
             </p>
-            <input
-              type="text"
-              placeholder="Please provide your APA membership number."
-              name="email"
-              id="email"
-              className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
-              {...register("APA", { required: true, maxLength: 8 })}
-            />
-            {errors.APA && (
-              <span className="text-xs text-red-600">Max 8 digit</span>
-            )}
           </div>
           {/* input 2 */}
           <div className="w-full flex flex-col gap-1">
             <p className="cursor-pointer sm:text-base text-sm">FullName</p>
             <input
               type="text"
-              placeholder="Prefix (Dr., Ms., Mr.) First Name (15 spaces) Middle Initial Last Name (20 spaces)"
-              name="fullname"
-              id="fullname"
-              className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
-              {...register("FullName", { required: true, maxLength: 100 })}
+              className="outline-none border-b-2 border-pink-600"
             />
-            {errors.FullName && (
-              <span className="text-xs text-red-600">Max 100</span>
-            )}
           </div>
           {/* input 3 */}
           <div className="w-full flex flex-col gap-1">
@@ -85,10 +77,7 @@ const Form = () => {
             </p>
             <input
               type="text"
-              placeholder="example: Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-56781."
-              name="mailingAddress"
-              id="mailingAddress"
-              className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+              className="outline-none border-b-2 border-pink-600"
             />
           </div>
           {/* input 4 */}
@@ -98,8 +87,7 @@ const Form = () => {
               <p className="cursor-pointer sm:text-base text-sm">City</p>
               <input
                 type="text"
-                id="city"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
             {/* input 4 coloum 2 */}
@@ -109,8 +97,7 @@ const Form = () => {
               </p>
               <input
                 type="text"
-                id="stateOrProvince"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
             {/* input 4 coloum 3 */}
@@ -120,8 +107,7 @@ const Form = () => {
               </p>
               <input
                 type="text"
-                id="zipOrPostalCode"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
             {/* input 4 coloum 4 */}
@@ -131,8 +117,7 @@ const Form = () => {
               </p>
               <input
                 type="text"
-                id="country"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
           </div>
@@ -145,8 +130,7 @@ const Form = () => {
               </p>
               <input
                 type="text"
-                id="daytimeTelephone"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
             {/* input 5 coloum 2 */}
@@ -155,8 +139,7 @@ const Form = () => {
               <input
                 type="text"
                 placeholder="Include Area Code example: (123)789785"
-                id="cellPhone"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
             {/* input 5 coloum 3 */}
@@ -166,8 +149,7 @@ const Form = () => {
               </p>
               <input
                 type="text"
-                id="zipOrPostalCode"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
           </div>
@@ -177,8 +159,7 @@ const Form = () => {
             <input
               type="text"
               placeholder="Enter your affiliation (e.g., Yale University, Independent practice, Sunset CMHC)."
-              id="Institution"
-              className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+              className="outline-none border-b-2 border-pink-600"
             />
           </div>
           {/* input 7 */}
@@ -188,38 +169,32 @@ const Form = () => {
               your institution for your badge.
             </h1>
             <div className="w-full flex items-center gap-5">
-              {/* input 5 coloum 1 */}
+              {/* input 4 coloum 1 */}
               <div className="w-full flex flex-col gap-1">
-                <p className="cursor-pointer sm:text-base text-sm">
-                  Daytime Telephone
-                </p>
+                <p className="cursor-pointer sm:text-base text-sm">City</p>
                 <input
                   type="text"
-                  id="daytimeTelephone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
-              {/* input 5 coloum 2 */}
+              {/* input 4 coloum 2 */}
               <div className="w-full flex flex-col gap-1">
                 <p className="cursor-pointer sm:text-base text-sm">
-                  Cell Phone
+                  State or Province
                 </p>
                 <input
                   type="text"
-                  placeholder="Include Area Code example: (123)789785"
-                  id="cellPhone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
-              {/* input 5 coloum 3 */}
+              {/* input 4 coloum 4 */}
               <div className="w-full flex flex-col gap-1">
                 <p className="cursor-pointer sm:text-base text-sm">
-                  Zip or Postal Code
+                  Country (If not U.S.)
                 </p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
             </div>
@@ -232,8 +207,7 @@ const Form = () => {
             <select
               type="text"
               placeholder="Enter your affiliation (e.g., Yale University, Independent practice, Sunset CMHC)."
-              id="zipOrPostalCode"
-              className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+              className="outline-none border-b-2 border-pink-600"
             >
               <option value="" className="bg-black text-white">
                 APA Member
@@ -281,8 +255,7 @@ const Form = () => {
                 <input
                   type="text"
                   placeholder="$"
-                  id="daytimeTelephone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
                 <p>Amount Due</p>
               </div>
@@ -294,8 +267,7 @@ const Form = () => {
                 <input
                   type="text"
                   placeholder="$"
-                  id="daytimeTelephone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
                 <p>Amount Due</p>
               </div>
@@ -314,8 +286,7 @@ const Form = () => {
               </p>
               <input
                 type="text"
-                id="daytimeTelephone"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
             {/* first APA */}
@@ -325,7 +296,6 @@ const Form = () => {
                 <input
                   type="checkbox"
                   placeholder="Include Area Code example: (123)789785"
-                  id="cellPhone"
                   className="size-5 cursor-pointer"
                 />
                 <p>Yes</p>
@@ -334,7 +304,6 @@ const Form = () => {
                 <input
                   type="checkbox"
                   placeholder="Include Area Code example: (123)789785"
-                  id="cellPhone"
                   className="size-5 cursor-pointer"
                 />
                 <p>No</p>
@@ -347,7 +316,6 @@ const Form = () => {
                 <input
                   type="checkbox"
                   placeholder="Include Area Code example: (123)789785"
-                  id="cellPhone"
                   className="size-5 cursor-pointer"
                 />
                 <p>Request one here (US/Canada only)</p>
@@ -363,8 +331,7 @@ const Form = () => {
               </p>
               <input
                 type="text"
-                id="daytimeTelephone"
-                className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                className="outline-none border-b-2 border-pink-600"
               />
             </div>
             {/* early career */}
@@ -374,7 +341,6 @@ const Form = () => {
                 <input
                   type="checkbox"
                   placeholder="Include Area Code example: (123)789785"
-                  id="cellPhone"
                   className="size-5 cursor-pointer"
                 />
                 <p>Yes</p>
@@ -383,7 +349,6 @@ const Form = () => {
                 <input
                   type="checkbox"
                   placeholder="Include Area Code example: (123)789785"
-                  id="cellPhone"
                   className="size-5 cursor-pointer"
                 />
                 <p>No</p>
@@ -405,8 +370,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="daytimeTelephone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Middle Initial */}
@@ -416,8 +380,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="cellPhone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Last Name */}
@@ -425,8 +388,7 @@ const Form = () => {
                 <p className="cursor-pointer sm:text-base text-sm">Last Name</p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Amount Due */}
@@ -436,8 +398,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
             </div>
@@ -450,8 +411,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="daytimeTelephone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Middle Initial */}
@@ -461,8 +421,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="cellPhone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Last Name */}
@@ -470,8 +429,7 @@ const Form = () => {
                 <p className="cursor-pointer sm:text-base text-sm">Last Name</p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Amount Due */}
@@ -481,8 +439,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
             </div>
@@ -495,8 +452,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="daytimeTelephone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Middle Initial */}
@@ -506,8 +462,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="cellPhone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Last Name */}
@@ -515,8 +470,7 @@ const Form = () => {
                 <p className="cursor-pointer sm:text-base text-sm">Last Name</p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Amount Due */}
@@ -526,8 +480,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
             </div>
@@ -540,8 +493,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="daytimeTelephone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Middle Initial */}
@@ -551,8 +503,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="cellPhone"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Last Name */}
@@ -560,8 +511,7 @@ const Form = () => {
                 <p className="cursor-pointer sm:text-base text-sm">Last Name</p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
               {/* Amount Due */}
@@ -571,8 +521,7 @@ const Form = () => {
                 </p>
                 <input
                   type="text"
-                  id="zipOrPostalCode"
-                  className="sm:py-2 py-1 outline-none pl-2 placeholder:italic bg-[rgba(255,255,255,0.07)] rounded"
+                  className="outline-none border-b-2 border-pink-600"
                 />
               </div>
             </div>
@@ -582,6 +531,133 @@ const Form = () => {
               <p>
                 I confirm that the individuals listed above are family members.
               </p>
+            </div>
+
+            {/* total fees due */}
+            <div className="w-full flex flex-col gap-1">
+              <p className="cursor-pointer sm:text-base text-sm">
+                Total Fees Due (Payment must accompany form)
+              </p>
+              <input
+                type="text"
+                placeholder="$"
+                className="outline-none border-b-2 border-pink-600"
+              />
+            </div>
+          </div>
+        </div>
+        {/* right side */}
+        <div className="w-[30%] flex flex-col gap-5">
+          {/* details */}
+          <h1 className="text-lg text-pretty">
+            Return form with accompanying check (in U.S. dollars/ U.S. bank) or
+            with a completed Credit Card Payment Authorization Form to:{" "}
+            <span className="font-bold">
+              AMERICAN PSYCHOLOGICAL ASSOCIATION,
+            </span>{" "}
+            Attn: Finance/2016 Convention, 750 First Street, NE, Washington, DC
+            20002-4242.{" "}
+            <span className="font-bold">
+              FORMS MUST BE RECEIVED AT APA BY JULY 7, 2016.
+            </span>{" "}
+            Forms postmarked July 1 and after will be charged fees effective on
+            July 1.
+          </h1>
+          {/* Payment Details */}
+          <div className="w-full flex flex-col border-4 p-5 gap-3">
+            {/* header 1 */}
+            <h1 className="text-2xl font-bold">
+              Credit Card Payment Authorization Form
+            </h1>
+            {/* header 2 */}
+            <h1 className="text-lg text-pretty">
+              I authorize the American Psychological Association to charge my
+              (check one):
+            </h1>
+            {/* card checkbox */}
+            <div className="w-full flex items-center justify-between py-5">
+              {/* checkbox 1 */}
+              <div className="flex items-center gap-3">
+                <input type="checkbox" className="size-5" />
+                <p className="text-xl">VISA</p>
+              </div>
+              {/* checkbox 2 */}
+              <div className="flex items-center gap-3">
+                <input type="checkbox" className="size-5" />
+                <p className="text-xl">MasterCard</p>
+              </div>
+              {/* checkbox 3 */}
+              <div className="flex items-center gap-3">
+                <input type="checkbox" className="size-5" />
+                <p className="text-xl">American Express</p>
+              </div>
+            </div>
+            <h1 className="text-xl">
+              2016 convention fees to my credit card as indicated below:
+            </h1>
+            {/* card name */}
+            <div className="flex flex-col w-full gap-1">
+              <p>Name as it appears on credit card</p>
+              <input
+                type="text"
+                className="outline-none border-b-2 border-pink-600"
+              />
+            </div>
+            {/* Fee to be charged */}
+            <div className="flex flex-col w-full gap-1">
+              <p>Fee to be charged: $ (convention registration)</p>
+              <input
+                type="text"
+                className="outline-none border-b-2 border-pink-600"
+              />
+            </div>
+            {/* Address of cardholder */}
+            <div className="flex flex-col w-full gap-1">
+              <p>Address of cardholder</p>
+              <textarea
+                type="text"
+                className="outline-none border-b-2 border-pink-600"
+              />
+            </div>
+            {/* Daytime phone number */}
+            <div className="flex flex-col w-full gap-1">
+              <p>Daytime phone number</p>
+              <input
+                type="text"
+                className="outline-none border-b-2 border-pink-600"
+              />
+            </div>
+            {/* Credit card number */}
+            <div className="flex flex-col w-full gap-1">
+              <p>Credit card number</p>
+              <input
+                type="text"
+                className="outline-none border-b-2 border-pink-600"
+              />
+            </div>
+            {/* Name of registrant (if different from cardholder) */}
+            <div className="flex flex-col w-full gap-1">
+              <p>Name of registrant (if different from cardholder)</p>
+              <input
+                type="text"
+                className="outline-none border-b-2 border-pink-600"
+              />
+            </div>
+            {/* Expiration date */}
+            <div className="flex flex-col w-full gap-1">
+              <p>Expiration date</p>
+              <input
+                type="text"
+                className="outline-none border-b-2 border-pink-600"
+              />
+            </div>
+            {/* Cardholder signature */}
+            <div className="flex flex-col w-full gap-1">
+              <p>Cardholder signature</p>
+              <input
+                type="text"
+                className="outline-none border-b-2 border-pink-600"
+              />
             </div>
           </div>
         </div>
