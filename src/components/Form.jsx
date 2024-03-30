@@ -21,18 +21,9 @@ import { useForm } from "react-hook-form";
 }
 // {/* form */}
 const Form = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    // Handle form submission (e.g., send data to server)
-    console.log(data);
-  };
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      // onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col items-center text-black w-full h-full gap-2 bg-white sm:p-10 p-5"
     >
       {/* title 1 */}
@@ -45,7 +36,7 @@ const Form = () => {
       </h3>
       <div className="flex sm:flex-row flex-col gap-5 w-full h-full">
         {/* left side */}
-        <div className="w-[70%] flex flex-col gap-3">
+        <div className="w-[70%] flex flex-col gap-5">
           <h1 className="text-xl font-bold">
             For immediate confirmation of your registration, complete the online
             convention registration form at www.apa.org/convention. You may
@@ -63,28 +54,47 @@ const Form = () => {
             </p>
           </div>
           {/* input 2 */}
-          <div className="w-full flex flex-col gap-1">
-            <p className="cursor-pointer sm:text-base text-sm">FullName</p>
-            <input
-              type="text"
-              className="outline-none border-b-2 border-pink-600"
-            />
+          <div className="w-full flex items-center justify-between gap-5">
+            <div className="w-full flex flex-col gap-1">
+              <input
+                type="text"
+                id=""
+                className="outline-none border-b-2 border-pink-600"
+              />
+              <p>Prefix (Dr., Ms., Mr.) First Name (15 spaces)</p>
+            </div>
+            <div className="w-full flex flex-col gap-1">
+              <input
+                type="text"
+                id=""
+                className="outline-none border-b-2 border-pink-600"
+              />
+              <p>Middle Initial</p>
+            </div>
+            <div className="w-full flex flex-col gap-1">
+              <input
+                type="text"
+                id=""
+                className="outline-none border-b-2 border-pink-600"
+              />
+              <p>Last Name (20 spaces)</p>
+            </div>
           </div>
           {/* input 3 */}
           <div className="w-full flex flex-col gap-1">
-            <p className="cursor-pointer sm:text-base text-sm">
-              Mailing Address
-            </p>
-            <input
+            <textarea
               type="text"
               className="outline-none border-b-2 border-pink-600"
             />
+            <p>Mailing Address (32 spaces)</p>
           </div>
           {/* input 4 */}
           <div className="w-full flex items-center gap-5">
             {/* input 4 coloum 1 */}
             <div className="w-full flex flex-col gap-1">
-              <p className="cursor-pointer sm:text-base text-sm">City</p>
+              <label htmlFor="" className="cursor-pointer sm:text-base text-sm">
+                City
+              </label>
               <input
                 type="text"
                 className="outline-none border-b-2 border-pink-600"
@@ -661,6 +671,11 @@ const Form = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="w-full flex items-center justify-center pt-10">
+        <button className="px-10 py-3 bg-pink-500 hover:bg-pink-600 rounded text-white font-medium transition-all duration-300">
+          Submit
+        </button>
       </div>
     </form>
     // </div>
