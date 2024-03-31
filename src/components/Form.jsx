@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const Form = () => {
   // all state
-  const [error, setError] = useState("this is a error");
+  const [error, setError] = useState("");
   const [firstAPAConvention, setFirstAPAConvention] = useState("");
   const [psychologist, setPsychologist] = useState("");
   const [payment, setPayment] = useState("");
@@ -235,7 +235,7 @@ const Form = () => {
               for the mailing address (e.g., department and institution). Street
               address will facilitate delivery.
             </h5>
-            <textarea type="text" id="MailingAddress" />
+            <textarea type="text" id="MailingAddress" name="mailingAddress" />
             <label htmlFor="MailingAddress">Mailing Address (32 spaces)</label>
           </div>
 
