@@ -5,19 +5,18 @@ const Form = () => {
       className="flex flex-col items-center text-black w-full h-full gap-2 bg-white sm:p-10 p-5"
     >
       {/* title 1 */}
-      <h3 className="sm:text-[1rem] text-[1.5rem] font-medium">
+      <h3 className="sm:text-[1rem] text-[0.7rem] sm:text-start text-center font-medium">
         2016 AMERICAN PSYCHOLOGICAL ASSOCIATION ANNUAL CONVENTION
       </h3>
       {/* title 2 */}
-      <h3 className="sm:text-[2rem] text-[1.5rem] font-medium">
+      <h3 className="sm:text-[2rem] text-[1.1rem] font-bold">
         ADVANCE REGISTRATION FORM
       </h3>
       <div className="flex sm:flex-row flex-col gap-5 w-full h-full">
         {/* left side */}
-        <div className="w-[65%] flex flex-col gap-10">
-
+        <div className="sm:w-[65%] w-full flex flex-col gap-10">
           {/* notice 1 */}
-          <h1 className="text-xl font-bold">
+          <h1 className="sm:text-[1vw] text-sm sm:text-start text-center font-bold">
             For immediate confirmation of your registration, complete the online
             convention registration form at www.apa.org/convention. You may
             register online beginning on April 15, 2016, at 10:00 a.m. EDT
@@ -25,7 +24,7 @@ const Form = () => {
           </h1>
 
           {/* notice 2 */}
-          <h1 className="text-xl text-balance">
+          <h1 className="sm:text-[1.1vw] text-sm text-balance">
             If you prefer to send your registration form to APA, you may
             complete the registration form and send to APA. Print legibly, using
             a black pen, entering information in the space allowed. Each
@@ -39,13 +38,12 @@ const Form = () => {
             </span>
           </h1>
 
-
           {/* APA member number */}
           <div className="w-full flex flex-col gap-1">
-            <p>
-              <span className="font-bold">1. APA MEMBER NUMBER:</span> Please
+            <h5>
+              <h4 className="font-bold">1. APA MEMBER NUMBER:</h4> Please
               provide your APA membership number
-            </p>
+            </h5>
             <input
               type="text"
               id="apanumber"
@@ -54,14 +52,13 @@ const Form = () => {
             <label htmlFor="apanumber">APA Member Number (8 digits)</label>
           </div>
 
-
           {/* First middle last Name */}
           <div className="w-full flex flex-col">
-            <p>
-              <span className="font-bold">2. NAME:</span> First name, middle initial, last name.
-              Prefix (Dr., Mr., Ms.) is optional.{" "}
-            </p>
-            <div className="w-full flex items-center justify-between gap-5">
+            <h5>
+              <h4 className="font-bold">2. NAME:</h4> First name, middle
+              initial, last name. Prefix (Dr., Mr., Ms.) is optional.{" "}
+            </h5>
+            <div className="w-full flex items-center justify-between gap-5 sm:flex-nowrap flex-wrap">
               <div className="w-full flex flex-col gap-1">
                 <input type="text" id="FirstName" />
                 <label htmlFor="FirstName">
@@ -79,61 +76,90 @@ const Form = () => {
             </div>
           </div>
 
-
           {/* Mailing address */}
           <div className="w-full flex flex-col gap-1">
+            <h5>
+              <h4 className="font-bold">3. MAILING ADDRESS:</h4> Please provide
+              a mailing address if you choose to have your Convention Program
+              mailed to you in advance (US/Canada only). Two lines are allowed
+              for the mailing address (e.g., department and institution). Street
+              address will facilitate delivery.
+            </h5>
             <textarea type="text" id="MailingAddress" />
             <label htmlFor="MailingAddress">Mailing Address (32 spaces)</label>
           </div>
-          {/* input 4 */}
-          <div className="w-full flex items-center gap-5">
-            {/* input 4 coloum 1 */}
-            <div className="w-full flex flex-col gap-1">
-              <input type="text" id="City" />
-              <label htmlFor="City">City</label>
-            </div>
-            {/* input 4 coloum 2 */}
-            <div className="w-full flex flex-col gap-1">
-              <input id="StateOrProvince" type="text" />
-              <label htmlFor="StateOrProvince">State/Province</label>
-            </div>
 
-            {/* input 4 coloum 3 */}
-            <div className="w-full flex flex-col gap-1">
-              <input id="ZipOrPostal" type="text" />
-              <label htmlFor="ZipOrPostal">Zip/Postal Code</label>
-            </div>
+          {/* city state country */}
+          <div className="w-full flex flex-col">
+            <h5>
+              <h4 className="font-bold">
+                4. CITY, STATE OR PROVINCE, ZIP OR POSTAL CODE, COUNTRY (IF NOT
+                U.S.):
+              </h4>{" "}
+              Use post office abbreviations for the state or province.
+            </h5>
+            <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+              {/* input 4 coloum 1 */}
+              <div className="w-full flex flex-col gap-1">
+                <input type="text" id="City" />
+                <label htmlFor="City">City</label>
+              </div>
+              {/* input 4 coloum 2 */}
+              <div className="w-full flex flex-col gap-1">
+                <input id="StateOrProvince" type="text" />
+                <label htmlFor="StateOrProvince">State/Province</label>
+              </div>
 
-            {/* input 4 coloum 4 */}
-            <div className="w-full flex flex-col gap-1">
-              <input type="text" id="Country" />
-              <label htmlFor="Country">Country (If not U.S.)</label>
+              {/* input 4 coloum 3 */}
+              <div className="w-full flex flex-col gap-1">
+                <input id="ZipOrPostal" type="text" />
+                <label htmlFor="ZipOrPostal">Zip/Postal Code</label>
+              </div>
+
+              {/* input 4 coloum 4 */}
+              <div className="w-full flex flex-col gap-1">
+                <input type="text" id="Country" />
+                <label htmlFor="Country">Country (If not U.S.)</label>
+              </div>
             </div>
           </div>
 
-          {/* input 5 */}
-          <div className="w-full flex items-center gap-5">
-            {/* input 5 coloum 1 */}
-            <div className="w-full flex flex-col gap-1">
-              <p className="cursor-pointer sm:text-base text-sm"></p>
-              <input type="text" id="DaytimeTelephone" />
-              <label htmlFor="DaytimeTelephone">Daytime Telephone</label>
-            </div>
-            {/* input 5 coloum 2 */}
-            <div className="w-full flex flex-col gap-1">
-              <input type="text" id="CellPhone" />
-              <label htmlFor="CellPhone">Cell Phone</label>
-            </div>
+          {/* daytime telephone cell phone email address */}
+          <div className="w-full flex flex-col">
+            <h5>
+              <h4 className="font-bold">
+                5. DAYTIME TELEPHONE, CELL PHONE, AND EMAIL ADDRESS:
+              </h4>{" "}
+              Please provide your daytime phone and cell phone numbers,
+              including area code, and your email address.{" "}
+            </h5>
+            <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+              {/* input 5 coloum 1 */}
+              <div className="w-full flex flex-col gap-1">
+                <p className="cursor-pointer sm:text-base text-sm"></p>
+                <input type="text" id="DaytimeTelephone" />
+                <label htmlFor="DaytimeTelephone">Daytime Telephone</label>
+              </div>
+              {/* input 5 coloum 2 */}
+              <div className="w-full flex flex-col gap-1">
+                <input type="text" id="CellPhone" />
+                <label htmlFor="CellPhone">Cell Phone</label>
+              </div>
 
-            {/* input 5 coloum 3 */}
-            <div className="w-full flex flex-col gap-1">
-              <input type="email" id="EmailAddress" />
-              <label htmlFor="EmailAddress">Email Address</label>
+              {/* input 5 coloum 3 */}
+              <div className="w-full flex flex-col gap-1">
+                <input type="email" id="EmailAddress" />
+                <label htmlFor="EmailAddress">Email Address</label>
+              </div>
             </div>
           </div>
 
-          {/* input 6 */}
+          {/* Institution */}
           <div className="w-full flex flex-col gap-1">
+            <h5>
+              <h4>6. INSTITUTION:</h4> Enter your affiliation (e.g., Yale
+              University, Independent practice, Sunset CMHC).{" "}
+            </h5>
             <input type="text" id="Institution" />
             <label htmlFor="Institution">
               Institution (do not exceed 40 spaces)
@@ -141,93 +167,205 @@ const Form = () => {
           </div>
 
           {/* City state/province country */}
-          <div className="w-full flex items-center gap-5">
-            {/* input 4 coloum 1 */}
-            <div className="w-full flex flex-col gap-1">
-              <input type="text" id="City2" />
-              <label htmlFor="City2">
-                City (if different from line 3) (25 spaces)
-              </label>
-            </div>
-            {/* input 4 coloum 2 */}
-            <div className="w-full flex flex-col gap-1">
-              <input type="text" id="StateOrProvince2" />
-              <label htmlFor="StateOrProvince2">State/Province</label>
-            </div>
-            {/* input 4 coloum 4 */}
-            <div className="w-full flex flex-col gap-1">
-              <input type="text" id="Country2" />
-              <label htmlFor="Country2">Country (If not U.S.)</label>
+          <div className="w-full flex flex-col">
+            <h5>
+              <h4>7. CITY, STATE OR PROVINCE, AND COUNTRY:</h4> Enter the city,
+              state or province, and country (if not U.S.) of your institution
+              for your badge.{" "}
+            </h5>
+            <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+              {/* input 4 coloum 1 */}
+              <div className="w-full flex flex-col gap-1">
+                <input type="text" id="City2" />
+                <label htmlFor="City2">
+                  City (if different from line 3) (25 spaces)
+                </label>
+              </div>
+              {/* input 4 coloum 2 */}
+              <div className="w-full flex flex-col gap-1">
+                <input type="text" id="StateOrProvince2" />
+                <label htmlFor="StateOrProvince2">State/Province</label>
+              </div>
+              {/* input 4 coloum 4 */}
+              <div className="w-full flex flex-col gap-1">
+                <input type="text" id="Country2" />
+                <label htmlFor="Country2">Country (If not U.S.)</label>
+              </div>
             </div>
           </div>
 
           {/* Membership */}
           <div className="flex flex-col gap-1">
+            <h5>
+              <h4>8. MEMBERSHIP CODE:</h4>
+              <h3>
+                {" "}
+                From the list below, select your membership status code; enter
+                it in the space allowed:
+              </h3>{" "}
+              <h4>M — APA Member; F — APA Fellow;</h4>
+              <h4>
+                {" "}
+                A — APA Associate; N — Nonmember; I — APA International
+                Affiliate;
+              </h4>
+              <h4> C — APA Community College Teacher Affiliate;</h4>{" "}
+              <h4>H — APA High School Teacher Affiliate;</h4>
+              <h4> R — APAGS Member; S — APA Student Affiliate;</h4>{" "}
+              <h4>T — Full-Time Student;</h4>
+              <h4>Q—State/Provincial/Territorial Association Representative</h4>
+            </h5>
             <input type="text" id="MembershipCode" />
             <label htmlFor="MembershipCode">Membership Code</label>
           </div>
 
           {/* Registration Fee and CE Session Fee */}
-          <div className="flex flex-col gap-2">
-            <div className="w-full flex items-center gap-5">
-              {/* input 9 coloum 1 */}
-              <div className="w-full flex flex-col gap-1">
-                <label htmlFor="RegistrationFee">Registration Fee</label>
-                <input type="text" id="RegistrationFee" placeholder="$" />
-                <label>Amount Due</label>
+          <div className="w-full flex flex-col">
+            {/* reg fee info */}
+            <h5>
+              <h4>9. REGISTRATION FEE:</h4> Enter fee (by June 30/July 1-Aug. 2)
+              paid. Payment (check or credit card) for registration fee must
+              accompany form. For those paying by VISA, MasterCard, or American
+              Express, please complete the Credit Card Payment Authorization.
+              Forms sent with a postmark of July 1 and after will be charged
+              fees effective on July 1.
+              <h3 className="pt-2">
+                <span className="font-bold">$275/$330—</span>APA member, fellow,
+                or associate, APA community college teacher affiliate, APA
+                international affiliate
+              </h3>
+              <h3>
+                <span className="font-bold">$70/$80—</span>APA student
+                affiliate, APAGS member
+              </h3>
+              <h3>
+                <span className="font-bold">$120/$130—</span>Full-time student,
+                APA high school teacher affiliate
+              </h3>
+              <h3>
+                <span className="font-bold">$10—</span>Nonrefundable processing
+                fee for nonmember nonpsychologist spouses/equivalents and
+                dependents under age 18 (see No. 18 below)
+              </h3>
+              <h3>
+                <span className="font-bold">$375/$430—</span>Nonmember of APA
+              </h3>
+            </h5>
+            <h5>
+              <h4>10. CE SESSIONS FEE FOR UNLIMITED CE CREDIT:</h4> Enter fee
+              paid (April–June 30/July 1–August 2):{" "}
+              <h3 className="pt-2">
+                <span className="font-bold">$85/$105—</span>APA member or
+                affiliate
+              </h3>{" "}
+              <h3>
+                <span className="font-bold">$120/$150—</span>Nonmember of APA
+              </h3>
+            </h5>
+
+            <div className="flex flex-col gap-2">
+              <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+                {/* input 9 coloum 1 */}
+                <div className="w-full flex flex-col gap-1">
+                  <label htmlFor="RegistrationFee">Registration Fee</label>
+                  <input type="text" id="RegistrationFee" placeholder="$" />
+                  <label>Amount Due</label>
+                </div>
+                {/* input 9 coloum 2 */}
+                <div className="w-full flex flex-col gap-1">
+                  <label htmlFor="CESessionFee">CE Sessions Fee</label>
+                  <input type="text" id="CESessionFee" placeholder="$" />
+                  <label>Amount Due</label>
+                </div>
               </div>
-              {/* input 9 coloum 2 */}
-              <div className="w-full flex flex-col gap-1">
-                <label htmlFor="CESessionFee">CE Sessions Fee</label>
-                <input type="text" id="CESessionFee" placeholder="$" />
-                <label>Amount Due</label>
-              </div>
+              <h5 className="font-medium">
+                (Enclose check or money order made out to American Psychological
+                Association or Credit Card Payment Authorization Form)
+              </h5>
             </div>
-            <h1 className="font-medium">
-              (Enclose check or money order made out to American Psychological
-              Association or Credit Card Payment Authorization Form)
-            </h1>
           </div>
 
           {/* institutional code and first APA and programs only */}
-          <div className="w-full flex items-center gap-20">
+          <div className="w-full flex flex-col gap-10">
             {/* institutional code */}
             <div className="w-full flex flex-col gap-1">
+              <h5>
+                <h4>11. INSTITUTIONAL CODE:</h4> Enter one of the following
+                numbers to identify the type of institution to which you belong:{" "}
+                <h3>
+                  1—Universities, Colleges, and Professional Schools, 2—Primary
+                  and Secondary Schools (Public and Private), 3—Government
+                  (Federal, State/Provincial, or Local) includes all military
+                  services, 4—Business/ Industry, 5—Non-Governmental
+                  Organizations (Associations or Quasi Governmental or
+                  International Organizations), 6a—Human (Mental/Health)
+                  Services (Hospitals, Clinics, CMHCs) or 6b— Independent
+                  Practice, 7—Other Professional (Non-Mental/Health) Services
+                  (Research Organizations, etc.), 8—Other (Retired/Emeritus,
+                  Self-Employed Individual/Owner, except Independent Practice,
+                  etc.)
+                </h3>
+              </h5>
               <input type="text" id="InstitutionalCode" />
               <label htmlFor="InstitutionalCode">Institutional Code</label>
             </div>
 
             {/* first APA */}
-            <div className="w-full flex gap-5 font-medium">
-              <p>First APA Convention</p>
-              <div className="flex items-center gap-3">
-                <input type="checkbox" className="size-5 cursor-pointer" />
-                <p>Yes</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <input type="checkbox" className="size-5 cursor-pointer" />
-                <p>No</p>
+            <div className="w-full flex flex-col">
+              <h5>
+                <h4>12. FIRST APA CONVENTION:</h4> Please check here if this is
+                your first APA Convention.
+              </h5>
+              <div className="w-full flex gap-5 font-medium">
+                <p>First APA Convention</p>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="size-5 cursor-pointer" />
+                  <p>Yes</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input type="checkbox" className="size-5 cursor-pointer" />
+                  <p>No</p>
+                </div>
               </div>
             </div>
 
             {/* programs only */}
-            <div className="w-full flex flex-col border-2 border-pink-600 p-5 font-medium">
-              <p>Programs Only Mailed Upon Request</p>
-              <div className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  placeholder="Include Area Code example: (123)789785"
-                  className="size-5 cursor-pointer"
-                />
-                <p>Request one here (US/Canada only)</p>
+            <div className="w-full flex flex-col">
+              <h5>
+                <h4>13. REQUEST PROGRAM BOOK:</h4> Please check here if you wish
+                to receive your Convention Program in advance (US/Canada only).
+                Help APA go green by using the online program and the mobile
+                app.
+              </h5>
+              <div className="w-full flex flex-col border-2 border-pink-600 p-5 font-medium">
+                <p>Programs Only Mailed Upon Request</p>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    placeholder="Include Area Code example: (123)789785"
+                    className="size-5 cursor-pointer"
+                  />
+                  <p>Request one here (US/Canada only)</p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* disability and early career */}
-          <div className="w-full flex items-center gap-20">
+          <div className="w-full flex flex-col gap-10">
             {/* disability */}
             <div className="w-full flex flex-col gap-1">
+              <h5>
+                <h4>14. PERSON WITH DISABILITY:</h4> If you are a person with a
+                disability and require special assistance, check this box.
+                Attach a separate note specifying special needs (e.g.,
+                wheelchair accessible transportation; sign language
+                interpreters, services for persons who are blind/visually
+                impaired; or support for other physical limitations). Requests
+                for assistance must be sent to APA by July 7, 2016. If
+                arrangements are not requested by July 7, 2016, APA will not be
+                able to guarantee the availability of such arrangements.
+              </h5>
               <input type="text" id="Disability" />
               <label htmlFor="Disability">
                 Person With Disability (leave blank if not disabled)
@@ -235,36 +373,58 @@ const Form = () => {
             </div>
 
             {/* early career */}
-            <div className="w-full flex gap-5 font-medium">
-              <p>Early Career Psychologist</p>
-              <div className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  placeholder="Include Area Code example: (123)789785"
-                  className="size-5 cursor-pointer"
-                />
-                <p>Yes</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  placeholder="Include Area Code example: (123)789785"
-                  className="size-5 cursor-pointer"
-                />
-                <p>No</p>
+            <div className="w-full flex flex-col">
+              <h5>
+                <h4>15. EARLY CAREER PSYCHOLOGIST:</h4> Please check here if you
+                are an Early Career Psychologist (i.e., a new professional
+                within 10 years of receiving your doctoral degree).
+              </h5>
+              <div className="w-full flex gap-5 font-medium">
+                <p>Early Career Psychologist</p>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    placeholder="Include Area Code example: (123)789785"
+                    className="size-5 cursor-pointer"
+                  />
+                  <p>Yes</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    placeholder="Include Area Code example: (123)789785"
+                    className="size-5 cursor-pointer"
+                  />
+                  <p>No</p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* nonMember Nonpsychologist */}
           <div className="flex flex-col gap-3 pt-5">
+            <h5>
+              <h4>
+                16. NONMEMBER NONPSYCHOLOGIST SPOUSE/ EQUIVALENT OR DEPENDENTS
+                UNDER AGE 18 BADGE REQUEST:
+              </h4>{" "}
+              If you wish to request a badge for a family member who is a
+              nonmember spouse/equivalent or dependent(s) under 18 years of age,
+              please provide name(s) for badge information (maximum of 4). A $10
+              per person nonrefundable processing fee will be required. By
+              requesting a badge here, these individuals may accompany the
+              registrant to areas that require a badge for admittance, such as
+              the exhibit area and the poster session area. No other
+              registration privileges will be provided.
+            </h5>
             <h1 className="font-medium">
               Name(s) of Nonmember Nonpsychologist Spouse/Equivalent or
               Dependent(s) Under Age 18 requiring a badge (maximum of 4)
             </h1>
 
             {/* nonMember Nonpsychologist column 1 */}
-            <div className="w-full flex items-center gap-5">
+            <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+              <span className="sm:hidden block">1.</span>
               {/* First Name */}
               <div className="w-full flex flex-col gap-1">
                 <input type="text" id="familyFirstName1" />
@@ -288,7 +448,8 @@ const Form = () => {
             </div>
 
             {/* nonMember Nonpsychologist column 2 */}
-            <div className="w-full flex items-center gap-5">
+            <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+              <span className="sm:hidden block">2.</span>
               {/* First Name */}
               <div className="w-full flex flex-col gap-1">
                 <input type="text" id="familyFirstName2" />
@@ -312,7 +473,8 @@ const Form = () => {
             </div>
 
             {/* nonMember Nonpsychologist column 3 */}
-            <div className="w-full flex items-center gap-5">
+            <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+              <span className="sm:hidden block">3.</span>
               {/* First Name */}
               <div className="w-full flex flex-col gap-1">
                 <input type="text" id="familyFirstName3" />
@@ -336,7 +498,8 @@ const Form = () => {
             </div>
 
             {/* nonMember Nonpsychologist column 4 */}
-            <div className="w-full flex items-center gap-5">
+            <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+              <span className="sm:hidden block">4.</span>
               {/* First Name */}
               <div className="w-full flex flex-col gap-1">
                 <input type="text" id="familyFirstName4" />
@@ -360,47 +523,71 @@ const Form = () => {
             </div>
 
             {/* confirmation family member */}
-            <div className="flex items-center gap-2 font-medium">
-              <input type="checkbox" className="size-5 cursor-pointer" />
-              <p>
-                I confirm that the individuals listed above are family members.
-              </p>
+            <div className="w-full flex-col flex">
+              <h5>
+                <span className="font-bold">17. CONFIRM</span> that these
+                individuals are family members by checking the box.
+              </h5>
+              <div className="flex items-center gap-2 font-medium">
+                <input type="checkbox" className="size-5 cursor-pointer" />
+                <p>
+                  I confirm that the individuals listed above are family
+                  members.
+                </p>
+              </div>
             </div>
 
             {/* city state/province country */}
-            <div className="w-full flex items-center gap-5">
-              {/* input 4 coloum 1 */}
-              <div className="w-full flex flex-col gap-1">
-                <input type="text" id="City3" />
-                <label htmlFor="City3">City</label>
-              </div>
-              {/* input 4 coloum 2 */}
-              <div className="w-full flex flex-col gap-1">
-                <input type="text" id="StateOrProvince3" />
-                <label htmlFor="StateOrProvince3">State/Province</label>
-              </div>
-              {/* input 4 coloum 4 */}
-              <div className="w-full flex flex-col gap-1">
-                <input type="text" id="Country3" />
-                <label htmlFor="Country3">Country (If not U.S.)</label>
+            <div className="w-full flex flex-col pt-10">
+              <h5>
+                <h4>18. CITY, STATE OR PROVINCE, AND COUNTRY:</h4> Please
+                provide the city, state or province, and country (if not U.S.)
+                for badges of nonmember nonpsychologist spouse/equivalent and
+                dependents under age 18.{" "}
+              </h5>
+              <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
+                {/* input 4 coloum 1 */}
+                <div className="w-full flex flex-col gap-1">
+                  <input type="text" id="City3" />
+                  <label htmlFor="City3">City</label>
+                </div>
+                {/* input 4 coloum 2 */}
+                <div className="w-full flex flex-col gap-1">
+                  <input type="text" id="StateOrProvince3" />
+                  <label htmlFor="StateOrProvince3">State/Province</label>
+                </div>
+                {/* input 4 coloum 4 */}
+                <div className="w-full flex flex-col gap-1">
+                  <input type="text" id="Country3" />
+                  <label htmlFor="Country3">Country (If not U.S.)</label>
+                </div>
               </div>
             </div>
 
             {/* total fees due */}
-            <div className="w-full flex flex-col gap-1">
-              <input type="text" id="TotalFeesDue" placeholder="$" />
-              <label htmlFor="TotalFeesDue" className="text-lg font-bold">
-                Total Fees Due (Payment must accompany form)
-              </label>
+            <div className="w-full flex flex-col">
+              <h5>
+                <h4>19. TOTAL FEES DUE:</h4> Enter total of fees due. Payment
+                must accompany form in order to process your registration.
+              </h5>
+              <div className="w-full flex flex-col gap-1">
+                <input type="text" id="TotalFeesDue" placeholder="$" />
+                <label htmlFor="TotalFeesDue" className="text-lg font-bold">
+                  Total Fees Due (Payment must accompany form)
+                </label>
+              </div>
             </div>
           </div>
         </div>
         {/* right side */}
-        <div className="w-[35%] flex flex-col gap-5">
+        <div className="sm:w-[35%] w-full flex flex-col gap-5">
           {/* details */}
-          <h1 className="text-xl text-balance px-10">
-            Return form with accompanying check (in U.S. dollars/ U.S. bank) or
-            with a completed Credit Card Payment Authorization Form to:{" "}
+          <h1 className="sm:text-[1vw] text-sm text-balance sm:px-0 px-2">
+            <h4>
+              20. Return form with accompanying check (in U.S. dollars/ U.S.
+              bank) or with a completed Credit Card Payment Authorization Form
+              to:
+            </h4>{" "}
             <span className="font-bold">
               AMERICAN PSYCHOLOGICAL ASSOCIATION,
             </span>{" "}
@@ -416,11 +603,11 @@ const Form = () => {
           {/* Payment Details */}
           <div className="w-full flex flex-col border-8 border-pink-600 p-3 gap-3">
             {/* header 1 */}
-            <h1 className="text-2xl font-bold">
+            <h1 className="sm:text-[1.4vw] text-xl sm:text-start text-center font-bold">
               Credit Card Payment Authorization Form
             </h1>
             {/* header 2 */}
-            <h1 className="text-xl text-pretty font-medium">
+            <h1 className="sm:text-[1.2vw] text-base sm:text-start text-center text-pretty font-medium">
               I authorize the American Psychological Association to charge my
               (check one):
             </h1>
@@ -428,23 +615,23 @@ const Form = () => {
             {/* card checkbox */}
             <div className="w-full flex items-center justify-between py-5 font-medium">
               {/* checkbox 1 */}
-              <div className="flex items-center gap-3">
-                <input type="checkbox" className="size-5" />
-                <p className="text-xl">VISA</p>
+              <div className="flex items-center sm:gap-3 gap-1">
+                <input type="checkbox" className="sm:size-5 size-3" />
+                <p className="sm:text-[1.2vw] text-sm">VISA</p>
               </div>
               {/* checkbox 2 */}
-              <div className="flex items-center gap-3">
-                <input type="checkbox" className="size-5" />
-                <p className="text-xl">MasterCard</p>
+              <div className="flex items-center  sm:gap-3 gap-1">
+                <input type="checkbox" className="sm:size-5 size-3" />
+                <p className="sm:text-[1.2vw] text-sm">MasterCard</p>
               </div>
               {/* checkbox 3 */}
-              <div className="flex items-center gap-3">
-                <input type="checkbox" className="size-5" />
-                <p className="text-xl">American Express</p>
+              <div className="flex items-center  sm:gap-3 gap-1">
+                <input type="checkbox" className="sm:size-5 size-3" />
+                <p className="sm:text-[1.2vw] text-sm">American Express</p>
               </div>
             </div>
 
-            <h1 className="text-xl">
+            <h1 className="sm:text-[1.2vw] text-sm">
               2016 convention fees to my credit card as indicated below:
             </h1>
 

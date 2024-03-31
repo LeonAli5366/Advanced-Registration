@@ -6,6 +6,7 @@
   label {
     cursor: pointer;
     font-weight: 500;
+    font-size: 0.8vw;
   }
   input,
   textarea {
@@ -13,9 +14,20 @@
     border-bottom-width: 2px;
     border-color: rgb(219 39 119);
   }
-  p {
-    font-size: 1.25rem /* 20px */;
+  h5 {
+    font-size: 1vw /* 20px */;
     line-height: 1.75rem /* 28px */;
     padding-bottom: 1.25rem /* 20px */;
+  }
+  h4 {
+    font-weight: 700;
+  }
+  @media screen and (max-width: 640px) {
+    h5 {
+      font-size: 0.8rem;
+    }
+    label{
+      font-size: 0.7rem;
+    }
   }
 }
