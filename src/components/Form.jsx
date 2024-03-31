@@ -1,7 +1,155 @@
+import { useState } from "react";
+
 const Form = () => {
+  // all state
+  const [error, setError] = useState("this is a error");
+  const [firstAPAConvention, setFirstAPAConvention] = useState("");
+  const [psychologist, setPsychologist] = useState("");
+  const [payment, setPayment] = useState("");
+
+  // all function
+  const handleRegisterSubmit = (event) => {
+    // event functions
+    setError("");
+    event.preventDefault();
+    const form = event.target;
+
+    // get from data
+    const apaMemberNumber = parseInt(form.apaMemberNumber.value);
+    const firstName = form.firstName.value;
+    const middleName = form.middleName.value;
+    const lastName = form.lastName.value;
+    const mailingAddress = form.mailingAddress.value;
+    const city = form.city.value;
+    const userZipCode = parseInt(form.userZipCode.value);
+    const userState = form.userState.value;
+    let userCountry = form.userCountry.value;
+    const userTelephone = form.userTelephone.value;
+    const userCellPhone = form.userCellPhone.value;
+    const userEmail = form.userEmail.value;
+    const institution = form.institution.value;
+    const institutionCity = form.institutionCity.value;
+    let institutionCountry = form.institutionCountry.value;
+    const institutionState = form.institutionState.value;
+    const membershipCode = form.membershipCode.value;
+    const registrationFeeDue = form.registrationFeeDue.value;
+    const sessionsFeeDue = form.sessionsFeeDue.value;
+    const institutionalCode = form.institutionalCode.value;
+    const mailRequest = form.mailRequest.checked;
+    const Disability = form.Disability.value;
+    const familyCity = form.familyCity.value;
+    const familyState = form.familyState.value;
+    const familyCountry = form.familyCountry.value;
+    const TotalFeesDue = form.TotalFeesDue.value;
+    const NameOfCreditCard = form.NameOfCreditCard.value;
+    const FeeToBeCharged = form.FeeToBeCharged.value;
+    const AddressOfCardholder = form.AddressOfCardholder.value;
+    const cardHolderPhoneNumber = form.cardHolderPhoneNumber.value;
+    const CreditCardNumber = form.CreditCardNumber.value;
+    const NameOfRegistrant = form.NameOfRegistrant.value;
+    const ExpirationDate = form.ExpirationDate.value;
+    const cardholderSignature = form.cardholderSignature.value;
+
+    // family all data
+
+    const family = [
+      {
+        familyFirstName1: form.familyFirstName1.value,
+        familyMiddleName1: form.familyMiddleName1.value,
+        familyLastName1: form.familyLastName1.value,
+        familyAmountDue1: form.familyAmountDue1.value,
+      },
+      {
+        familyFirstName2: form.familyFirstName2.value,
+        familyMiddleName2: form.familyMiddleName2.value,
+        familyLastName2: form.familyLastName2.value,
+        familyAmountDue2: form.familyAmountDue2.value,
+      },
+      {
+        familyFirstName3: form.familyFirstName3.value,
+        familyMiddleName3: form.familyMiddleName3.value,
+        familyLastName3: form.familyLastName3.value,
+        familyAmountDue3: form.familyAmountDue3.value,
+      },
+      {
+        familyFirstName4: form.familyFirstName4.value,
+        familyMiddleName4: form.familyMiddleName4.value,
+        familyLastName4: form.familyLastName4.value,
+        familyAmountDue4: form.familyAmountDue4.value,
+      },
+    ];
+
+    // regitser functions
+    if (userCountry === "" || userCountry === " ") {
+      userCountry = "U.S.";
+    }
+    if (institutionCountry === "" || institutionCountry === " ") {
+      institutionCountry = "U.S.";
+    }
+    if (firstAPAConvention === "") {
+      return setError("Select it is your first time or not");
+    }
+
+    // register data for backend
+    const registerData = {
+      apaMemberNumber,
+      firstName,
+      middleName,
+      lastName,
+      mailingAddress,
+      city,
+      userState,
+      userZipCode,
+      userCountry,
+      userTelephone,
+      userCellPhone,
+      userEmail,
+      institution,
+      institutionCity,
+      institutionCountry,
+      institutionState,
+      membershipCode,
+      registrationFeeDue,
+      sessionsFeeDue,
+      institutionalCode,
+      firstAPAConvention: firstAPAConvention,
+      mailRequest,
+      Disability,
+      psychologist: psychologist,
+      family,
+      familyCity,
+      familyState,
+      familyCountry,
+      TotalFeesDue,
+      payment: payment,
+      NameOfCreditCard,
+      FeeToBeCharged,
+      AddressOfCardholder,
+      cardHolderPhoneNumber,
+      CreditCardNumber,
+      NameOfRegistrant,
+      ExpirationDate,
+      cardholderSignature,
+    };
+
+    // console.log(registerData);
+
+    // post data to server
+    fetch(`http://localhost:5000/api/v1/register`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(registerData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <form
-      // onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleRegisterSubmit}
       className="flex flex-col items-center text-black w-full h-full gap-2 bg-white sm:p-10 p-5"
     >
       {/* title 1 */}
@@ -45,8 +193,10 @@ const Form = () => {
               provide your APA membership number
             </h5>
             <input
-              type="text"
+              type="number"
               id="apanumber"
+              name="apaMemberNumber"
+              required
               className="max-w-[500px] w-full outline-none border-b-2 border-pink-600"
             />
             <label htmlFor="apanumber">APA Member Number (8 digits)</label>
@@ -60,17 +210,17 @@ const Form = () => {
             </h5>
             <div className="w-full flex items-center justify-between gap-5 sm:flex-nowrap flex-wrap">
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="FirstName" />
+                <input type="text" id="FirstName" name="firstName" required />
                 <label htmlFor="FirstName">
                   Prefix (Dr., Ms., Mr.) First Name (15 spaces)
                 </label>
               </div>
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="middleName" />
+                <input type="text" id="middleName" name="middleName" required />
                 <label htmlFor="middleName">Middle Initial</label>
               </div>
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="LastName" />
+                <input type="text" id="LastName" name="lastName" required />
                 <label htmlFor="LastName">Last Name (20 spaces)</label>
               </div>
             </div>
@@ -101,24 +251,34 @@ const Form = () => {
             <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
               {/* input 4 coloum 1 */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="City" />
+                <input type="text" id="City" name="city" required />
                 <label htmlFor="City">City</label>
               </div>
               {/* input 4 coloum 2 */}
               <div className="w-full flex flex-col gap-1">
-                <input id="StateOrProvince" type="text" />
+                <input
+                id="StateOrProvince"
+                type="text"
+                name="userState"
+                required
+              />
                 <label htmlFor="StateOrProvince">State/Province</label>
               </div>
 
               {/* input 4 coloum 3 */}
               <div className="w-full flex flex-col gap-1">
-                <input id="ZipOrPostal" type="text" />
+                <input
+                id="ZipOrPostal"
+                type="number"
+                name="userZipCode"
+                required
+              />
                 <label htmlFor="ZipOrPostal">Zip/Postal Code</label>
               </div>
 
               {/* input 4 coloum 4 */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="Country" />
+                <input type="text" id="Country" name="userCountry" />
                 <label htmlFor="Country">Country (If not U.S.)</label>
               </div>
             </div>
@@ -137,18 +297,23 @@ const Form = () => {
               {/* input 5 coloum 1 */}
               <div className="w-full flex flex-col gap-1">
                 <p className="cursor-pointer sm:text-base text-sm"></p>
-                <input type="text" id="DaytimeTelephone" />
+                <input type="number" id="DaytimeTelephone" name="userTelephone" />
                 <label htmlFor="DaytimeTelephone">Daytime Telephone</label>
               </div>
               {/* input 5 coloum 2 */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="CellPhone" />
+                <input
+                type="number"
+                id="CellPhone"
+                name="userCellPhone"
+                required
+              />
                 <label htmlFor="CellPhone">Cell Phone</label>
               </div>
 
               {/* input 5 coloum 3 */}
               <div className="w-full flex flex-col gap-1">
-                <input type="email" id="EmailAddress" />
+                <input type="email" id="EmailAddress" name="userEmail" required />
                 <label htmlFor="EmailAddress">Email Address</label>
               </div>
             </div>
@@ -160,7 +325,7 @@ const Form = () => {
               <h4>6. INSTITUTION:</h4> Enter your affiliation (e.g., Yale
               University, Independent practice, Sunset CMHC).{" "}
             </h5>
-            <input type="text" id="Institution" />
+            <input type="text" id="Institution" name="institution" required />
             <label htmlFor="Institution">
               Institution (do not exceed 40 spaces)
             </label>
@@ -176,19 +341,23 @@ const Form = () => {
             <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
               {/* input 4 coloum 1 */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="City2" />
+                <input type="text" id="City2" name="institutionCity" />
                 <label htmlFor="City2">
                   City (if different from line 3) (25 spaces)
                 </label>
               </div>
               {/* input 4 coloum 2 */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="StateOrProvince2" />
+                <input
+                type="text"
+                id="StateOrProvince2"
+                name="institutionState"
+              />
                 <label htmlFor="StateOrProvince2">State/Province</label>
               </div>
               {/* input 4 coloum 4 */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="Country2" />
+                <input type="text" id="Country2" name="institutionCountry" />
                 <label htmlFor="Country2">Country (If not U.S.)</label>
               </div>
             </div>
@@ -215,7 +384,7 @@ const Form = () => {
               <h4>T — Full-Time Student;</h4>
               <h4>Q—State/Provincial/Territorial Association Representative</h4>
             </h5>
-            <input type="text" id="MembershipCode" />
+            <input type="text" id="MembershipCode" name="membershipCode" />
             <label htmlFor="MembershipCode">Membership Code</label>
           </div>
 
@@ -268,13 +437,25 @@ const Form = () => {
                 {/* input 9 coloum 1 */}
                 <div className="w-full flex flex-col gap-1">
                   <label htmlFor="RegistrationFee">Registration Fee</label>
-                  <input type="text" id="RegistrationFee" placeholder="$" />
+                  <input
+                  type="number"
+                  id="RegistrationFee"
+                  placeholder="$"
+                  name="registrationFeeDue"
+                  defaultValue={0}
+                />
                   <label>Amount Due</label>
                 </div>
                 {/* input 9 coloum 2 */}
                 <div className="w-full flex flex-col gap-1">
                   <label htmlFor="CESessionFee">CE Sessions Fee</label>
-                  <input type="text" id="CESessionFee" placeholder="$" />
+                  <input
+                  type="number"
+                  id="CESessionFee"
+                  defaultValue={0}
+                  placeholder="$"
+                  name="sessionsFeeDue"
+                />
                   <label>Amount Due</label>
                 </div>
               </div>
@@ -306,7 +487,11 @@ const Form = () => {
                   etc.)
                 </h3>
               </h5>
-              <input type="text" id="InstitutionalCode" />
+              <input
+                type="text"
+                id="InstitutionalCode"
+                name="institutionalCode"
+              />
               <label htmlFor="InstitutionalCode">Institutional Code</label>
             </div>
 
@@ -318,12 +503,30 @@ const Form = () => {
               </h5>
               <div className="w-full flex gap-5 font-medium">
                 <p>First APA Convention</p>
-                <div className="flex items-center gap-3">
-                  <input type="checkbox" className="size-5 cursor-pointer" />
+                <div className={`flex items-center gap-3`}>
+                  <input
+                  onClick={() => {
+                    firstAPAConvention != "yes"
+                      ? setFirstAPAConvention("yes")
+                      : setFirstAPAConvention("");
+                  }}
+                  disabled={firstAPAConvention === "no"}
+                  type="checkbox"
+                  className="size-5 cursor-pointer"
+                />
                   <p>Yes</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <input type="checkbox" className="size-5 cursor-pointer" />
+                  <input
+                  onClick={() => {
+                    firstAPAConvention != "no"
+                      ? setFirstAPAConvention("no")
+                      : setFirstAPAConvention("");
+                  }}
+                  type="checkbox"
+                  className="size-5 cursor-pointer"
+                  disabled={firstAPAConvention === "yes"}
+                />
                   <p>No</p>
                 </div>
               </div>
@@ -344,7 +547,8 @@ const Form = () => {
                     type="checkbox"
                     placeholder="Include Area Code example: (123)789785"
                     className="size-5 cursor-pointer"
-                  />
+                    name="mailRequest"
+                />
                   <p>Request one here (US/Canada only)</p>
                 </div>
               </div>
@@ -366,7 +570,12 @@ const Form = () => {
                 arrangements are not requested by July 7, 2016, APA will not be
                 able to guarantee the availability of such arrangements.
               </h5>
-              <input type="text" id="Disability" />
+              <input
+                type="text"
+                id="Disability"
+                name="Disability"
+                defaultValue={""}
+              />
               <label htmlFor="Disability">
                 Person With Disability (leave blank if not disabled)
               </label>
@@ -386,7 +595,13 @@ const Form = () => {
                     type="checkbox"
                     placeholder="Include Area Code example: (123)789785"
                     className="size-5 cursor-pointer"
-                  />
+                    onClick={() => {
+                    psychologist != "yes"
+                      ? setPsychologist("yes")
+                      : setPsychologist("");
+                  }}
+                  disabled={psychologist === "no"}
+                />
                   <p>Yes</p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -394,7 +609,13 @@ const Form = () => {
                     type="checkbox"
                     placeholder="Include Area Code example: (123)789785"
                     className="size-5 cursor-pointer"
-                  />
+                    onClick={() => {
+                    psychologist != "no"
+                      ? setPsychologist("no")
+                      : setPsychologist("");
+                  }}
+                  disabled={psychologist === "yes"}
+                />
                   <p>No</p>
                 </div>
               </div>
@@ -427,22 +648,38 @@ const Form = () => {
               <span className="sm:hidden block">1.</span>
               {/* First Name */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyFirstName1" />
+                <input
+                  type="text"
+                  id="familyFirstName1"
+                  name="familyFirstName1"
+                />
                 <label htmlFor="familyFirstName1">First Name</label>
               </div>
               {/* Middle Initial */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyMiddleInitial1" />
+                <input
+                  type="text"
+                  id="familyMiddleInitial1"
+                  name="familyMiddleName1"
+                />
                 <label htmlFor="familyMiddleInitial1">Middle Initial</label>
               </div>
               {/* Last Name */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyLastName1" />
+                <input
+                  type="text"
+                  id="familyLastName1"
+                  name="familyLastName1"
+                />
                 <label htmlFor="familyLastName1">Last Name</label>
               </div>
               {/* Amount Due */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyAmountDue1" />
+                <input
+                  type="text"
+                  id="familyAmountDue1"
+                  name="familyAmountDue1"
+                />
                 <label htmlFor="familyAmountDue1">Amount Due</label>
               </div>
             </div>
@@ -452,22 +689,38 @@ const Form = () => {
               <span className="sm:hidden block">2.</span>
               {/* First Name */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyFirstName2" />
+                <input
+                  type="text"
+                  id="familyFirstName2"
+                  name="familyFirstName2"
+                />
                 <label htmlFor="familyFirstName2">First Name</label>
               </div>
               {/* Middle Initial */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyMiddleInitial2" />
+                <input
+                  type="text"
+                  id="familyMiddleInitial2"
+                  name="familyMiddleName2"
+                />
                 <label htmlFor="familyMiddleInitial2">Middle Initial</label>
               </div>
               {/* Last Name */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyLastName2" />
+                <input
+                  type="text"
+                  id="familyLastName2"
+                  name="familyLastName2"
+                />
                 <label htmlFor="familyLastName2">Last Name</label>
               </div>
               {/* Amount Due */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyAmountDue2" />
+                <input
+                  type="text"
+                  id="familyAmountDue2"
+                  name="familyAmountDue2"
+                />
                 <label htmlFor="familyAmountDue2">Amount Due</label>
               </div>
             </div>
@@ -477,22 +730,38 @@ const Form = () => {
               <span className="sm:hidden block">3.</span>
               {/* First Name */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyFirstName3" />
+                <input
+                  type="text"
+                  id="familyFirstName3"
+                  name="familyFirstName3"
+                />
                 <label htmlFor="familyFirstName3">First Name</label>
               </div>
               {/* Middle Initial */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyMiddleInitial3" />
+                <input
+                  type="text"
+                  id="familyMiddleInitial3"
+                  name="familyMiddleName3"
+                />
                 <label htmlFor="familyMiddleInitial3">Middle Initial</label>
               </div>
               {/* Last Name */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyLastName3" />
+                <input
+                  type="text"
+                  id="familyLastName3"
+                  name="familyLastName3"
+                />
                 <label htmlFor="familyLastName3">Last Name</label>
               </div>
               {/* Amount Due */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyAmountDue3" />
+                <input
+                  type="text"
+                  id="familyAmountDue3"
+                  name="familyAmountDue3"
+                />
                 <label htmlFor="familyAmountDue1">Amount Due</label>
               </div>
             </div>
@@ -502,22 +771,38 @@ const Form = () => {
               <span className="sm:hidden block">4.</span>
               {/* First Name */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyFirstName4" />
+                <input
+                  type="text"
+                  id="familyFirstName4"
+                  name="familyFirstName4"
+                />
                 <label htmlFor="familyFirstName4">First Name</label>
               </div>
               {/* Middle Initial */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyMiddleInitial4" />
+                <input
+                  type="text"
+                  id="familyMiddleInitial4"
+                  name="familyMiddleName4"
+                />
                 <label htmlFor="familyMiddleInitial4">Middle Initial</label>
               </div>
               {/* Last Name */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyLastName4" />
+                <input
+                  type="text"
+                  id="familyLastName4"
+                  name="familyLastName4"
+                />
                 <label htmlFor="familyLastName4">Last Name</label>
               </div>
               {/* Amount Due */}
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="familyAmountDue4" />
+                <input
+                  type="text"
+                  id="familyAmountDue4"
+                  name="familyAmountDue4"
+                />
                 <label htmlFor="familyAmountDue4">Amount Due</label>
               </div>
             </div>
@@ -529,7 +814,12 @@ const Form = () => {
                 individuals are family members by checking the box.
               </h5>
               <div className="flex items-center gap-2 font-medium">
-                <input type="checkbox" className="size-5 cursor-pointer" />
+                <input
+                type="checkbox"
+                className="size-5 cursor-pointer"
+                name="isfamily"
+                required
+              />
                 <p>
                   I confirm that the individuals listed above are family
                   members.
@@ -548,17 +838,22 @@ const Form = () => {
               <div className="w-full flex items-center gap-5 sm:flex-nowrap flex-wrap">
                 {/* input 4 coloum 1 */}
                 <div className="w-full flex flex-col gap-1">
-                  <input type="text" id="City3" />
+                  <input type="text" id="City3" name="familyCity" />
                   <label htmlFor="City3">City</label>
                 </div>
                 {/* input 4 coloum 2 */}
                 <div className="w-full flex flex-col gap-1">
-                  <input type="text" id="StateOrProvince3" />
+                  <input type="text" id="StateOrProvince3" name="familyState" />
                   <label htmlFor="StateOrProvince3">State/Province</label>
                 </div>
                 {/* input 4 coloum 4 */}
                 <div className="w-full flex flex-col gap-1">
-                  <input type="text" id="Country3" />
+                  <input
+                  type="text"
+                  id="Country3"
+                  name="familyCountry"
+                  defaultValue={"U.S."}
+                />
                   <label htmlFor="Country3">Country (If not U.S.)</label>
                 </div>
               </div>
@@ -571,7 +866,12 @@ const Form = () => {
                 must accompany form in order to process your registration.
               </h5>
               <div className="w-full flex flex-col gap-1">
-                <input type="text" id="TotalFeesDue" placeholder="$" />
+                <input
+                type="number"
+                id="TotalFeesDue"
+                placeholder="$"
+                name="TotalFeesDue"
+              />
                 <label htmlFor="TotalFeesDue" className="text-lg font-bold">
                   Total Fees Due (Payment must accompany form)
                 </label>
@@ -616,17 +916,44 @@ const Form = () => {
             <div className="w-full flex items-center justify-between py-5 font-medium">
               {/* checkbox 1 */}
               <div className="flex items-center sm:gap-3 gap-1">
-                <input type="checkbox" className="sm:size-5 size-3" />
+                <input
+                  type="checkbox"
+                  className="sm:size-5 size-3"
+                  onClick={() => {
+                    payment != "visa" ? setPayment("visa") : setPayment("");
+                  }}
+                  disabled={
+                    payment === "MasterCard" || payment === "AmericanExpress"
+                  }
+                />
                 <p className="sm:text-[1.2vw] text-sm">VISA</p>
               </div>
               {/* checkbox 2 */}
               <div className="flex items-center  sm:gap-3 gap-1">
-                <input type="checkbox" className="sm:size-5 size-3" />
+                <input
+                  type="checkbox"
+                  className="sm:size-5 size-3"
+                  onClick={() => {
+                    payment != "MasterCard"
+                      ? setPayment("MasterCard")
+                      : setPayment("");
+                  }}
+                  disabled={payment === "AmericanExpress" || payment === "visa"}
+                />
                 <p className="sm:text-[1.2vw] text-sm">MasterCard</p>
               </div>
               {/* checkbox 3 */}
               <div className="flex items-center  sm:gap-3 gap-1">
-                <input type="checkbox" className="sm:size-5 size-3" />
+                <input
+                  type="checkbox"
+                  className="sm:size-5 size-3"
+                  onClick={() => {
+                    payment != "AmericanExpress"
+                      ? setPayment("AmericanExpress")
+                      : setPayment("");
+                  }}
+                  disabled={payment === "MasterCard" || payment === "visa"}
+                />
                 <p className="sm:text-[1.2vw] text-sm">American Express</p>
               </div>
             </div>
@@ -637,7 +964,11 @@ const Form = () => {
 
             {/* card name */}
             <div className="flex flex-col w-full gap-1">
-              <input type="text" id="NameOfCreditCard" />
+              <input
+                type="text"
+                id="NameOfCreditCard"
+                name="NameOfCreditCard"
+              />
               <label htmlFor="NameOfCreditCard">
                 Name as it appears on credit card
               </label>
@@ -645,7 +976,7 @@ const Form = () => {
 
             {/* Fee to be charged */}
             <div className="flex flex-col w-full gap-1">
-              <input type="text" id="FeeToBeCharged" />
+              <input type="number" id="FeeToBeCharged" name="FeeToBeCharged" />
               <label htmlFor="FeeToBeCharged">
                 Fee to be charged: $ (convention registration)
               </label>
@@ -653,25 +984,41 @@ const Form = () => {
 
             {/* Address of cardholder */}
             <div className="flex flex-col w-full gap-1">
-              <textarea type="text" id="AddressOfCardholder" />
+              <textarea
+                type="text"
+                id="AddressOfCardholder"
+                name="AddressOfCardholder"
+              />
               <label htmlFor="AddressOfCardholder">Address of cardholder</label>
             </div>
 
             {/* Daytime phone number */}
             <div className="flex flex-col w-full gap-1">
-              <input type="text" id="DaytimePhoneNumber" />
+              <input
+                type="text"
+                id="DaytimePhoneNumber"
+                name="cardHolderPhoneNumber"
+              />
               <label htmlFor="DaytimePhoneNumber">Daytime phone number</label>
             </div>
 
             {/* Credit card number */}
             <div className="flex flex-col w-full gap-1">
-              <input type="text" id="CreditCardNumber" />
+              <input
+                type="text"
+                id="CreditCardNumber"
+                name="CreditCardNumber"
+              />
               <label htmlFor="CreditCardNumber">Credit card number</label>
             </div>
 
             {/* Name of registrant (if different from cardholder) */}
             <div className="flex flex-col w-full gap-1">
-              <input type="text" id="NameOfRegistrant" />
+              <input
+                type="text"
+                id="NameOfRegistrant"
+                name="NameOfRegistrant"
+              />
               <label htmlFor="NameOfRegistrant">
                 Name of registrant (if different from cardholder)
               </label>
@@ -679,20 +1026,28 @@ const Form = () => {
 
             {/* Expiration date */}
             <div className="flex flex-col w-full gap-1">
-              <input type="text" id="ExpirationDate" />
+              <input type="text" id="ExpirationDate" name="ExpirationDate" />
               <label htmlFor="ExpirationDate">Expiration date</label>
             </div>
 
             {/* Cardholder signature */}
             <div className="flex flex-col w-full gap-1">
-              <input type="text" id="CardholderSignature" />
+              <input
+                type="text"
+                id="CardholderSignature"
+                name="cardholderSignature"
+              />
               <label htmlFor="CardholderSignature">Cardholder signature</label>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full flex items-center justify-center pt-10">
-        <button className="px-10 py-3 bg-pink-500 hover:bg-pink-600 rounded text-white font-medium transition-all duration-300">
+      <h1 className="text-red-600 text-center  pt-10">{error}</h1>
+      <div className="w-full flex items-center justify-center mt-2">
+        <button
+          type="submit"
+          className="px-10 py-3 bg-pink-500 hover:bg-pink-600 rounded text-white font-medium transition-all duration-300"
+        >
           Submit
         </button>
       </div>
